@@ -1,20 +1,35 @@
 package com.example.fitmanager
 
+import android.content.Intent
 import android.os.Bundle
-import androidx.activity.enableEdgeToEdge
+import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 
 class Home : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
         setContentView(R.layout.activity_main)
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
-            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
-            insets
+
+        val btnFrequencia = findViewById<Button>(R.id.btnFrequencia)
+        val btnPerfil = findViewById<Button>(R.id.btnPerfil)
+        val btnTreino = findViewById<Button>(R.id.btnTreino)
+
+        btnFrequencia.setOnClickListener {
+            startActivity(
+                Intent(this, Frequencia::class.java)
+            )
+        }
+
+        btnPerfil.setOnClickListener {
+            startActivity(
+                Intent(this, Perfil::class.java)
+            )
+        }
+
+        btnTreino.setOnClickListener {
+            startActivity(
+                Intent(this, Treino::class.java)
+            )
         }
     }
 }
