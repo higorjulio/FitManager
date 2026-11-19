@@ -11,18 +11,20 @@ import androidx.appcompat.app.AppCompatActivity
 
 class Login : AppCompatActivity() {
 
+    private lateinit var dbHelper: Database
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
 
+        dbHelper = Database(this)
+
         val email = findViewById<EditText>(R.id.etEmail)
         val senha = findViewById<EditText>(R.id.etSenha)
         val entrar = findViewById<Button>(R.id.btnEntrar)
-
         val cadastro = findViewById<TextView>(R.id.tvCadastro)
 
         entrar.setOnClickListener {
-
             val usuario = email.text.toString().trim()
             val password = senha.text.toString()
 
@@ -32,8 +34,7 @@ class Login : AppCompatActivity() {
                 return@setOnClickListener
             }
 
-            if (!Patterns.EMAIL_ADDRESS
-                    .matcher(usuario).matches()) {
+            if (!Patterns.EMAIL_ADDRESS.matcher(usuario).matches()) {
                 email.error = "E-mail inválido"
                 email.requestFocus()
                 return@setOnClickListener
@@ -45,10 +46,10 @@ class Login : AppCompatActivity() {
                 return@setOnClickListener
             }
 
-            //login teste
-            if (usuario == "admin@email.com" &&
-                password == "123456") {
+            //----------
+            val loginValido = dbHelper.validarLogin(usuario, password)
 
+            if (loginValido) {
                 Toast.makeText(
                     this,
                     "Bem-vindo ao FitManager!",
@@ -58,7 +59,6 @@ class Login : AppCompatActivity() {
                 val intent = Intent(this, Home::class.java)
                 startActivity(intent)
                 finish()
-
             } else {
                 Toast.makeText(
                     this,
@@ -69,11 +69,8 @@ class Login : AppCompatActivity() {
         }
 
         cadastro.setOnClickListener {
-            Toast.makeText(
-                this,
-                "Cadastro em breve!",
-                Toast.LENGTH_SHORT
-            ).show()
+            val intent = Intent(this, Cadastro::class.java)
+            startActivity(intent)
         }
     }
 }
