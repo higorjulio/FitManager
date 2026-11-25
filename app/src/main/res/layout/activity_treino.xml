@@ -1,10 +1,162 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".Treino">
+<ScrollView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/main"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#F2F6FC"
+        android:fillViewport="true">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="18dp">
+
+        <!-- CABEÇALHO -->
+        <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Meus Treinos"
+                android:textColor="#174B91"
+                android:textSize="28sp"
+                android:textStyle="bold" />
+
+        <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Organize sua rotina e acompanhe sua evolução."
+                android:textColor="#68778A"
+                android:textSize="14sp"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="22dp" />
+
+        <TextView
+                android:id="@+id/tvProgresso"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Progresso: 0 de 8 exercícios"
+                android:textColor="#174B91"
+                android:textStyle="bold"
+                android:textSize="14sp"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="8dp"/>
+
+        <ProgressBar
+                android:id="@+id/progressTreino"
+                style="?android:attr/progressBarStyleHorizontal"
+                android:layout_width="match_parent"
+                android:layout_height="12dp"
+                android:max="8"
+                android:progress="0"
+                android:progressTint="#2475D0"
+                android:progressBackgroundTint="#DCE6F2"
+                android:layout_marginBottom="20dp"/>
+
+        <!-- PEITO -->
+        <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="PEITO"
+                android:textColor="#174B91"
+                android:textSize="17sp"
+                android:textStyle="bold"
+                android:paddingBottom="10dp" />
+
+        <include layout="@layout/item_exercicio"
+                android:id="@+id/exSupinoReto" />
+
+        <include layout="@layout/item_exercicio"
+                android:id="@+id/exSupinoInclinado" />
+
+        <!-- COSTAS -->
+        <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="COSTAS"
+                android:textColor="#174B91"
+                android:textSize="17sp"
+                android:textStyle="bold"
+                android:paddingTop="12dp"
+                android:paddingBottom="10dp" />
+
+        <include layout="@layout/item_exercicio"
+                android:id="@+id/exPuxada" />
+
+        <include layout="@layout/item_exercicio"
+                android:id="@+id/exRemada" />
+
+        <!-- PERNAS -->
+        <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="PERNAS"
+                android:textColor="#174B91"
+                android:textSize="17sp"
+                android:textStyle="bold"
+                android:paddingTop="12dp"
+                android:paddingBottom="10dp" />
+
+        <include layout="@layout/item_exercicio"
+                android:id="@+id/exAgachamento" />
+
+        <include layout="@layout/item_exercicio"
+                android:id="@+id/exLegPress" />
+
+        <!-- BRAÇOS -->
+        <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="BRAÇOS"
+                android:textColor="#174B91"
+                android:textSize="17sp"
+                android:textStyle="bold"
+                android:paddingTop="12dp"
+                android:paddingBottom="10dp" />
+
+        <include layout="@layout/item_exercicio"
+                android:id="@+id/exRosca" />
+
+        <include layout="@layout/item_exercicio"
+                android:id="@+id/exTriceps" />
+
+        <!-- BOTÃO PARA FINALIZAR O TREINO -->
+        <Button
+                android:id="@+id/btnFinalizarTreino"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Finalizar treino"
+                android:textAllCaps="false"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:textColor="#FFFFFF"
+                android:backgroundTint="#174B91"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="20dp" />
+
+        <!-- TÍTULO DO HISTÓRICO -->
+        <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Histórico de treinos"
+                android:textColor="#174B91"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:layout_marginBottom="10dp" />
+
+        <!-- REGISTROS DO HISTÓRICO -->
+        <TextView
+                android:id="@+id/tvHistorico"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Nenhum treino finalizado ainda."
+                android:textColor="#526579"
+                android:textSize="14sp"
+                android:background="@drawable/bg_exercicio"
+                android:padding="16dp"
+                android:layout_marginBottom="20dp" />
+
+
+    </LinearLayout>
+
+</ScrollView>

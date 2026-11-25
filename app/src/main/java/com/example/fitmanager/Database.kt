@@ -36,10 +36,11 @@ class Database(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, null
         db.insert(TABLE_USUARIOS, null, values)
     }
 
+
     override fun onUpgrade(db: SQLiteDatabase, oldVersion: Int, newVersion: Int) {
-        db.execSQL("DROP TABLE IF EXISTS $TABLE_USUARIOS")
-        onCreate(db)
+        // As atualizações do banco serão feitas sem apagar os dados existentes.
     }
+
 
     private fun hashPassword(password: String): String {
         val digest = MessageDigest.getInstance("SHA-256")
@@ -79,4 +80,90 @@ class Database(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, null
         db.close()
         return existe
     }
+    fun buscarUsuarioPorEmail(email: String): Pair<String, String>? {
+        val db = readableDatabase
+
+        val query = """
+        SELECT $COLUMN_NOME, $COLUMN_EMAIL
+        FROM $TABLE_USUARIOS
+        WHERE LOWER($COLUMN_EMAIL) = ?
+    """
+
+        val cursor = db.rawQuery(
+            query,
+            arrayOf(email.lowercase().trim())
+        )
+
+        var usuario: Pair<String, String>? = null
+
+        if (cursor.moveToFirst()) {
+            val nome = cursor.getString(0)
+            val emailEncontrado = cursor.getString(1)
+
+            usuario = Pair(nome, emailEncontrado)
+        }
+
+        cursor.close()
+        db.close()
+
+        return usuario
+    }
+    fun atualizarUsuario(
+        emailAtual: String,
+        novoNome: String,
+        novoEmail: String
+    ): Boolean {
+        val db = writableDatabase
+
+        val values = ContentValues().apply {
+            put(COLUMN_NOME, novoNome.trim())
+            put(COLUMN_EMAIL, novoEmail.lowercase().trim())
+        }
+
+        val resultado = try {
+            db.update(
+                TABLE_USUARIOS,
+                values,
+                "$COLUMN_EMAIL = ?",
+                arrayOf(emailAtual.lowercase().trim())
+            )
+        } catch (e: android.database.sqlite.SQLiteConstraintException) {
+            0
+        }
+
+        db.close()
+
+        return resultado > 0
+    }
+
+    fun alterarSenha(
+        email: String,
+        senhaAtual: String,
+        novaSenha: String
+    ): Boolean {
+        val db = writableDatabase
+
+        val senhaAtualHash = hashPassword(senhaAtual)
+
+        val novaSenhaHash = hashPassword(novaSenha)
+
+        val values = ContentValues().apply {
+            put(COLUMN_SENHA, novaSenhaHash)
+        }
+
+        val resultado = db.update(
+            TABLE_USUARIOS,
+            values,
+            "$COLUMN_EMAIL = ? AND $COLUMN_SENHA = ?",
+            arrayOf(
+                email.lowercase().trim(),
+                senhaAtualHash
+            )
+        )
+
+        db.close()
+
+        return resultado > 0
+    }
+
 }

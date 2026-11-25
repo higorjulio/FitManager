@@ -56,10 +56,15 @@ class Login : AppCompatActivity() {
                     Toast.LENGTH_SHORT
                 ).show()
 
-                val intent = Intent(this, Home::class.java)
-                startActivity(intent)
+                val intentHome = Intent(this, Home::class.java)
+
+                intentHome.putExtra("usuario_email", usuario)
+
+                startActivity(intentHome)
                 finish()
-            } else {
+            }
+
+            else {
                 Toast.makeText(
                     this,
                     "E-mail ou senha incorretos!",
