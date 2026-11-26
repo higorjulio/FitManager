@@ -79,6 +79,10 @@ class Frequencia : AppCompatActivity() {
             registrarPresencaHoje()
         }
 
+        findViewById<Button>(R.id.btnVoltar).setOnClickListener {
+            finish()
+        }
+
         atualizarTela()
     }
 

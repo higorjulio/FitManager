@@ -7,6 +7,7 @@ import android.webkit.WebChromeClient
 import android.webkit.WebSettings
 import android.webkit.WebView
 import android.webkit.WebViewClient
+import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 
 class MapasAcademias : AppCompatActivity() {
@@ -15,6 +16,10 @@ class MapasAcademias : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_mapa_academias)
+
+        findViewById<Button>(R.id.btnVoltar).setOnClickListener {
+            finish()
+        }
 
         val mapa = findViewById<WebView>(R.id.mapa)
 

@@ -15,6 +15,23 @@
             android:orientation="vertical"
             android:padding="20dp">
 
+        <Button
+                android:id="@+id/btnVoltar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:minWidth="0dp"
+                android:minHeight="0dp"
+                android:paddingStart="0dp"
+                android:paddingEnd="12dp"
+                android:paddingTop="4dp"
+                android:paddingBottom="8dp"
+                android:background="@android:color/transparent"
+                android:text="← Voltar"
+                android:textAllCaps="false"
+                android:textColor="#174B91"
+                android:textSize="15sp"
+                android:textStyle="bold" />
+
         <!-- Cabeçalho -->
         <TextView
                 android:layout_width="match_parent"

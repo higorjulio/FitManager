@@ -76,6 +76,10 @@ class Perfil : AppCompatActivity() {
 
         dbHelper = Database(this)
 
+        findViewById<Button>(R.id.btnVoltar).setOnClickListener {
+            finish()
+        }
+
         val etNome = findViewById<EditText>(R.id.etNomePerfil)
         ivFotoPerfil = findViewById(R.id.ivFotoPerfil)
         val btnEscolherFoto = findViewById<Button>(R.id.btnEscolherFoto)

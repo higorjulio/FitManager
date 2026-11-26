@@ -203,6 +203,10 @@ class Treino : AppCompatActivity() {
             finalizarTreino()
         }
 
+        findViewById<Button>(R.id.btnVoltar).setOnClickListener {
+            finish()
+        }
+
         carregarHistorico()
     }
 

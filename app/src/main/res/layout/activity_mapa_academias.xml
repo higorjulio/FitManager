@@ -6,6 +6,23 @@
         android:padding="15dp"
         android:background="#F2F6FC">
 
+    <Button
+            android:id="@+id/btnVoltar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:minWidth="0dp"
+            android:minHeight="0dp"
+            android:paddingStart="0dp"
+            android:paddingEnd="12dp"
+            android:paddingTop="4dp"
+            android:paddingBottom="4dp"
+            android:background="@android:color/transparent"
+            android:text="← Voltar"
+            android:textAllCaps="false"
+            android:textColor="#1565C0"
+            android:textSize="15sp"
+            android:textStyle="bold"/>
+
     <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
