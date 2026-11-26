@@ -1,10 +1,353 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".Frequencia">
+<ScrollView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/main"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#F2F6FC"
+        android:fillViewport="true"
+        tools:context=".Frequencia">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="20dp">
+
+        <!-- Cabeçalho -->
+        <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Minha Frequência"
+                android:textColor="#174B91"
+                android:textSize="28sp"
+                android:textStyle="bold" />
+
+        <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Acompanhe sua constância e registre suas idas à academia."
+                android:textColor="#68778A"
+                android:textSize="14sp"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="24dp" />
+
+        <!-- Resumo e meta semanal -->
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:background="@drawable/bg_exercicio"
+                android:padding="20dp"
+                android:layout_marginBottom="18dp">
+
+            <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="RESUMO"
+                    android:textColor="#174B91"
+                    android:textStyle="bold"
+                    android:textSize="15sp"
+                    android:layout_marginBottom="16dp" />
+
+            <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:baselineAligned="false"
+                    android:layout_marginBottom="18dp">
+
+                <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical"
+                        android:background="#F2F6FC"
+                        android:padding="14dp"
+                        android:layout_marginEnd="8dp">
+
+                    <TextView
+                            android:id="@+id/tvTotalMes"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="0 dias"
+                            android:textColor="#174B91"
+                            android:textSize="22sp"
+                            android:textStyle="bold" />
+
+                    <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Presenças no mês"
+                            android:textColor="#526579"
+                            android:textSize="13sp"
+                            android:layout_marginTop="4dp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical"
+                        android:background="#F2F6FC"
+                        android:padding="14dp"
+                        android:layout_marginStart="8dp">
+
+                    <TextView
+                            android:id="@+id/tvSequencia"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="0 dias"
+                            android:textColor="#174B91"
+                            android:textSize="22sp"
+                            android:textStyle="bold" />
+
+                    <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Sequência atual"
+                            android:textColor="#526579"
+                            android:textSize="13sp"
+                            android:layout_marginTop="4dp" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:layout_marginBottom="8dp">
+
+                <TextView
+                        android:id="@+id/tvProgressoFrequencia"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Meta semanal: 0 de 5 dias"
+                        android:textColor="#174B91"
+                        android:textStyle="bold"
+                        android:textSize="14sp" />
+
+                <ImageButton
+                        android:id="@+id/btnEditarMeta"
+                        android:layout_width="36dp"
+                        android:layout_height="36dp"
+                        android:src="@android:drawable/ic_menu_edit"
+                        android:background="?attr/selectableItemBackgroundBorderless"
+                        android:contentDescription="Editar meta semanal"
+                        android:padding="6dp"
+                        app:tint="#174B91"
+                        xmlns:app="http://schemas.android.com/apk/res-auto" />
+
+            </LinearLayout>
+
+            <ProgressBar
+                    android:id="@+id/progressFrequencia"
+                    style="?android:attr/progressBarStyleHorizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="12dp"
+                    android:max="5"
+                    android:progress="0"
+                    android:progressTint="#2475D0"
+                    android:progressBackgroundTint="#DCE6F2" />
+
+        </LinearLayout>
+
+        <!-- Frequência da semana -->
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:background="@drawable/bg_exercicio"
+                android:padding="20dp"
+                android:layout_marginBottom="18dp">
+
+            <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="FREQUÊNCIA DA SEMANA"
+                    android:textColor="#174B91"
+                    android:textStyle="bold"
+                    android:textSize="15sp"
+                    android:layout_marginBottom="14dp" />
+
+            <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center">
+
+                <TextView
+                        android:id="@+id/tvDiaSeg"
+                        android:layout_width="0dp"
+                        android:layout_height="44dp"
+                        android:layout_weight="1"
+                        android:layout_marginEnd="4dp"
+                        android:gravity="center"
+                        android:text="Seg"
+                        android:textColor="#526579"
+                        android:textSize="13sp"
+                        android:textStyle="bold"
+                        android:background="#E5EEF9" />
+
+                <TextView
+                        android:id="@+id/tvDiaTer"
+                        android:layout_width="0dp"
+                        android:layout_height="44dp"
+                        android:layout_weight="1"
+                        android:layout_marginHorizontal="4dp"
+                        android:gravity="center"
+                        android:text="Ter"
+                        android:textColor="#526579"
+                        android:textSize="13sp"
+                        android:textStyle="bold"
+                        android:background="#E5EEF9" />
+
+                <TextView
+                        android:id="@+id/tvDiaQua"
+                        android:layout_width="0dp"
+                        android:layout_height="44dp"
+                        android:layout_weight="1"
+                        android:layout_marginHorizontal="4dp"
+                        android:gravity="center"
+                        android:text="Qua"
+                        android:textColor="#526579"
+                        android:textSize="13sp"
+                        android:textStyle="bold"
+                        android:background="#E5EEF9" />
+
+                <TextView
+                        android:id="@+id/tvDiaQui"
+                        android:layout_width="0dp"
+                        android:layout_height="44dp"
+                        android:layout_weight="1"
+                        android:layout_marginHorizontal="4dp"
+                        android:gravity="center"
+                        android:text="Qui"
+                        android:textColor="#526579"
+                        android:textSize="13sp"
+                        android:textStyle="bold"
+                        android:background="#E5EEF9" />
+
+                <TextView
+                        android:id="@+id/tvDiaSex"
+                        android:layout_width="0dp"
+                        android:layout_height="44dp"
+                        android:layout_weight="1"
+                        android:layout_marginHorizontal="4dp"
+                        android:gravity="center"
+                        android:text="Sex"
+                        android:textColor="#526579"
+                        android:textSize="13sp"
+                        android:textStyle="bold"
+                        android:background="#E5EEF9" />
+
+                <TextView
+                        android:id="@+id/tvDiaSab"
+                        android:layout_width="0dp"
+                        android:layout_height="44dp"
+                        android:layout_weight="1"
+                        android:layout_marginHorizontal="4dp"
+                        android:gravity="center"
+                        android:text="Sáb"
+                        android:textColor="#526579"
+                        android:textSize="13sp"
+                        android:textStyle="bold"
+                        android:background="#E5EEF9" />
+
+                <TextView
+                        android:id="@+id/tvDiaDom"
+                        android:layout_width="0dp"
+                        android:layout_height="44dp"
+                        android:layout_weight="1"
+                        android:layout_marginStart="4dp"
+                        android:gravity="center"
+                        android:text="Dom"
+                        android:textColor="#526579"
+                        android:textSize="13sp"
+                        android:textStyle="bold"
+                        android:background="#E5EEF9" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <!-- Registrar presença -->
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:background="@drawable/bg_exercicio"
+                android:padding="20dp"
+                android:layout_marginBottom="22dp">
+
+            <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="CHECK-IN DE HOJE"
+                    android:textColor="#174B91"
+                    android:textStyle="bold"
+                    android:textSize="15sp"
+                    android:layout_marginBottom="8dp" />
+
+            <TextView
+                    android:id="@+id/tvStatusHoje"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Você ainda não registrou presença hoje."
+                    android:textColor="#526579"
+                    android:textSize="14sp"
+                    android:layout_marginBottom="16dp" />
+
+            <Button
+                    android:id="@+id/btnRegistrarPresenca"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Registrar presença hoje"
+                    android:textAllCaps="false"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:textColor="#FFFFFF"
+                    android:backgroundTint="#174B91" />
+
+        </LinearLayout>
+
+        <!-- Histórico de presença -->
+        <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Histórico de presença"
+                android:textColor="#174B91"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:layout_marginBottom="10dp" />
+
+        <TextView
+                android:id="@+id/tvHistoricoFrequencia"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Nenhuma presença registrada ainda."
+                android:textColor="#526579"
+                android:textSize="14sp"
+                android:background="@drawable/bg_exercicio"
+                android:padding="16dp"
+                android:layout_marginBottom="12dp" />
+
+        <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="FitManager • Sua evolução começa aqui"
+                android:textColor="#8291A3"
+                android:textSize="12sp"
+                android:gravity="center"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="16dp" />
+
+    </LinearLayout>
+
+</ScrollView>
