@@ -22,7 +22,6 @@ class Home : AppCompatActivity() {
                 }
             }
         }
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -32,6 +31,7 @@ class Home : AppCompatActivity() {
         val btnFrequencia = findViewById<Button>(R.id.btnFrequencia)
         val btnPerfil = findViewById<Button>(R.id.btnPerfil)
         val btnTreino = findViewById<Button>(R.id.btnTreino)
+        val btnMapa = findViewById<Button>(R.id.btnMapa)
 
         btnFrequencia.setOnClickListener {
             startActivity(Intent(this, Frequencia::class.java))
@@ -45,6 +45,10 @@ class Home : AppCompatActivity() {
 
         btnTreino.setOnClickListener {
             startActivity(Intent(this, Treino::class.java))
+        }
+
+        btnMapa.setOnClickListener {
+            startActivity(Intent(this, MapasAcademias::class.java))
         }
     }
 }
